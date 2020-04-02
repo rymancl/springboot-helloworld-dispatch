@@ -1,7 +1,7 @@
 #!cue
 
 docker_user: "cmays"
-github_user: "cmays20"
+github_user: "rymancl"
 
 common_env: [
   {
@@ -44,7 +44,7 @@ resource "src-git": {
 
 resource "docker-image": {
   type: "image"
-  param url: docker_user + "/hello-world-dispatch:$(context.build.name)"
+  param url: 513021945672.dkr.ecr.us-west-2.amazonaws.com/helloworld:latest
   param digest: "$(inputs.resources.docker-image.digest)"
 }
 
@@ -210,7 +210,7 @@ task "deploy": {
       workingDir: "/workspace/gitops-git"
       args: [
         "-git-revision=$(context.git.commit)",
-        "-substitute=imageName=" + docker_user + "/hello-world-dispatch@$(inputs.resources.docker-image.digest)",
+        "-substitute=imageName=513021945672.dkr.ecr.us-west-2.amazonaws.com/helloworld@$(inputs.resources.docker-image.digest)",
         "--force-push"
       ]
     }
