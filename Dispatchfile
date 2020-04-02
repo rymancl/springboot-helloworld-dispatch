@@ -44,7 +44,7 @@ resource "src-git": {
 
 resource "docker-image": {
   type: "image"
-  param url: 513021945672.dkr.ecr.us-west-2.amazonaws.com/helloworld:latest
+  param url: "513021945672.dkr.ecr.us-west-2.amazonaws.com/helloworld:latest"
   param digest: "$(inputs.resources.docker-image.digest)"
 }
 
